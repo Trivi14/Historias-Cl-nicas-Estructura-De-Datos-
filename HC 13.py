@@ -1,19 +1,15 @@
 import tkinter as tk
 from tkinter import ttk, Toplevel
 from collections import deque
-import array  # Importar el módulo array para implementar un array
+import array  
 
-# Lista que almacena las historias clínicas
 historias = []  
 
-# Cola para manejar el acceso a pacientes (FIFO)
 cola_pacientes = deque()  
 
-# Pila para almacenar las últimas historias clínicas modificadas (LIFO)
 pila_historial = []  
 
-# Array para almacenar IDs de pacientes, solo para demostrar el uso (ejemplo de uso de array)
-ids_pacientes = array.array('i', [])  # Array de enteros para almacenar IDs
+ids_pacientes = array.array('i', [])  
 
 def agregar_historia(historia):
     historias.append(historia)
@@ -93,11 +89,9 @@ class AplicacionHistoriasClinicas:
         historia = HistoriaClinica(paciente, fecha, "", id)
         agregar_historia(historia)
 
-        # Agregar paciente a la cola
         cola_pacientes.append(paciente)  
 
-        # Agregar ID al array
-        ids_pacientes.append(len(historias) + 1)  # Guardar el ID en el array
+        ids_pacientes.append(len(historias) + 1) 
 
         self.listbox_pacientes.insert(tk.END, f"{nombre} {apellido} - {fecha} - ID: {id}")
 
@@ -149,7 +143,7 @@ class AplicacionHistoriasClinicas:
             historia.diagnostico = diagnostico
             historia.tratamiento = tratamiento
             
-            # Almacenar en la pila el historial modificado
+            
             pila_historial.append(historia)  
 
             self.txt_diagnostico.delete(0, tk.END)
@@ -182,7 +176,6 @@ class AplicacionHistoriasClinicas:
         agregar_historia(historia)
         historia.tratamiento = nuevo_tratamiento
         
-        # Almacenar en la pila el nuevo historial
         pila_historial.append(historia)  
 
         self.txt_nuevo_diagnostico.delete(0, tk.END)
